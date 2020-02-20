@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  gather_facts: false
+  connection: local
+
+  collections:
+    - community.kubernetes
+
+  tasks:
+    - name: Ensure the monitoring Namespace exists.
+      k8s:
+        api_version: v1
+        kind: Namespace
+        name: monitoring
+        state: present
